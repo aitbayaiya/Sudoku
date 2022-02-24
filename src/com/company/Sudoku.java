@@ -30,6 +30,51 @@ public class Sudoku {
         frame.setVisible(true);
     }
 
+    public static void newGame() {
+        int k = 0;
+        ArrayList<Integer> randomnumber = getRandomNum();
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                grid[i][j] = 0;
+                if (((j + 2) % 2) == 0 && ((i + 2) % 2) == 0) {
+                    grid[i][j] = randomnumber.get(k);
+                    k++;
+                    if (k == 9) {
+                        k = 0;
+                    }
+                }
+            }
+        }
+
+        if (search(grid)) {
+            System.out.println("OK !!");
+        }
+        int rann = ran.nextInt(level);
+        int c = 0;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                temp[i][j] = 0;
+                if (c < rann) {
+                    c++;
+                    continue;
+                } else {
+                    rann = ran.nextInt(level);
+                    c = 0;
+                    temp[i][j] = grid[i][j];
+                }
+            }
+        }
+
+//        for (int i = 0; i < grid.length; i++) {
+//            for (int j = 0; j < grid[i].length; j++) {
+//                System.err.print(grid[i][j]+" ");
+//            }
+//            System.out.println("sssssssssssssssssssssss");
+//        }
+        p.setarray(grid, temp);
+        p.setTextLable();
+    }
 
     public static int[][] getFreeCellList(int[][] grid) {
 
