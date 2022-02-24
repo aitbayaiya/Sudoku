@@ -82,7 +82,7 @@ public class Panal extends javax.swing.JPanel {
         });
         return j;
     }
-    
+
     public Panal() {
         initComponents();
         /*------------------------main panal  -------------------------------------*/
@@ -284,5 +284,46 @@ public class Panal extends javax.swing.JPanel {
 
         add(bPanel, "South");   //add button panel to frame
 
+    }
+    public void setarray(int[][] grid, int[][] temp) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                this.temp[i][j] = temp[i][j];
+                this.grid[i][j] = grid[i][j];
+            }
+        }
+    }
+
+    public void setTextLable() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (this.temp[i][j] != 0) {
+                    boxes[i][j].setText(String.valueOf(this.temp[i][j]));
+                    boxes[i][j].setEditable(false);
+                    boxes[i][j].setBackground(Color.decode("#C0DCC0"));
+                } else {
+                    boxes[i][j].setText("");
+                }
+            }
+        }
+    }
+
+    public static void restgame() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                boxes[i][j].setForeground(Color.black);
+                boxes[i][j].setEditable(true);
+                boxes[i][j].setBackground(Color.WHITE);
+            }
+        }
+    }
+
+    private String TimeFormat(int count) {
+
+        int hours = count / 3600;
+        int minutes = (count - hours * 3600) / 60;
+        int seconds = count - minutes * 60;
+
+        return String.format("      Timer :" + "%02d", hours) + " : " + String.format("%02d", minutes) + " : " + String.format("%02d", seconds);
     }
 
