@@ -28,4 +28,17 @@ public class Sudoku {
         frame.setContentPane(p);
         frame.setVisible(true);
     }
+
+    public static ArrayList<Integer> getRandomNum() {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for (Integer i = 1; i < 10; i++) {
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+        return numbers;
+    }
+
+    public static void setlevel(int lev) {
+        level = lev;
+    }
 }
